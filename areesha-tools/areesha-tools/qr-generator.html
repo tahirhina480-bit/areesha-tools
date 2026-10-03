@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QR Code Generator — Free Custom QR Codes with Download | Areesha Tools</title>
+  <meta name="description" content="Free QR code generator: create QR codes for links, text, WhatsApp numbers and payments in seconds. Download as PNG. No sign-up, works on mobile.">
+  <meta property="og:title" content="QR Code Generator — Free Custom QR Codes">
+  <meta property="og:description" content="Make QR codes for your menu, website or WhatsApp number in seconds and download them as PNG images.">
+  <meta property="og:type" content="website">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js" defer></script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand" href="index.html"><span class="brand-mark">A</span> Areesha Tools</a>
+    <nav class="nav" aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a href="whatsapp-link-generator.html">WhatsApp Tool</a>
+      <a href="seo-checker.html">SEO Checker</a>
+      <a href="qr-generator.html" class="active">QR Generator</a>
+      <a href="pricing.html">Pricing</a>
+      <span class="pro-badge" id="at-pro-badge"></span>
+      <button class="btn small" id="at-unlock-link" type="button">Unlock Pro</button>
+    </nav>
+  </div>
+</header>
+
+<main class="container">
+  <p class="crumb"><a href="index.html">Home</a> › QR Code Generator</p>
+  <h1>QR Code Generator</h1>
+  <p>Create a scannable QR code for any link or text — free, instant, downloadable as PNG.</p>
+
+  <section class="toolbox" aria-label="QR code generator tool">
+    <h2>Generate Your QR Code</h2>
+    <div class="field">
+      <label for="qr-text">Text or link</label>
+      <input type="text" id="qr-text" placeholder="https://www.example.com  or  your WhatsApp link">
+      <p class="hint">Works with website links, WhatsApp chat links, plain text, phone numbers and more.</p>
+    </div>
+    <button class="btn" id="qr-generate" type="button">Generate QR Code</button>
+    <p class="error" id="qr-error" role="alert"></p>
+    <div id="qr-box" aria-live="polite"></div>
+    <div id="qr-download-wrap" style="display:none; text-align:center;">
+      <button class="btn secondary" id="qr-download" type="button">Download PNG</button>
+    </div>
+    <p class="usage-note" data-usage-note="qr-gen"></p>
+  </section>
+
+  <article class="article">
+    <h2>What Is a QR Code Generator?</h2>
+    <p>A QR code generator is a free online tool that turns any text or web link into a square barcode-like image called a <strong>QR code</strong>. When someone points their phone camera at it, the encoded information opens instantly — a website, a WhatsApp chat, a menu, a payment screen, or a location on the map. No typing, no spelling mistakes, no friction.</p>
+    <p>QR codes have become part of daily life in Pakistan: restaurants put them on tables for digital menus, shops print them for Easypaisa and JazzCash payments, clinics use them for appointment booking links, and clothing brands add them to shopping bags linking to their Instagram. One tiny printed square connects your physical business to your digital presence.</p>
+
+    <h2>How to Use This Tool (Step by Step)</h2>
+    <ol>
+      <li><strong>Enter your text or link</strong> in the box above. This can be your website address, a <a href="whatsapp-link-generator.html">WhatsApp chat link</a>, your Facebook page, or any message.</li>
+      <li><strong>Click "Generate QR Code"</strong> — your QR code appears immediately.</li>
+      <li><strong>Click "Download PNG"</strong> to save the image to your phone or computer.</li>
+      <li><strong>Print it</strong> on your shop banner, table standees, flyers, visiting cards, product packaging, or receipts.</li>
+    </ol>
+
+    <h2>Smart Ways Pakistani Businesses Use QR Codes</h2>
+    <ul>
+      <li><strong>Restaurants &amp; cafes:</strong> table stickers linking to the digital menu or online ordering.</li>
+      <li><strong>Retail shops:</strong> QR codes for Easypaisa/JazzCash payments at the counter — faster than cash handling.</li>
+      <li><strong>Clinics:</strong> appointment booking links on the reception desk and prescription slips.</li>
+      <li><strong>Salons &amp; services:</strong> link to your price list, Instagram portfolio, or review page.</li>
+      <li><strong>Real estate:</strong> property flyers with a QR code opening the location on Google Maps.</li>
+    </ul>
+
+    <h2>Tips for QR Codes That Actually Get Scanned</h2>
+    <ul>
+      <li><strong>Print it big enough</strong> — at least 3×3 cm on cards, bigger on banners. Tiny codes don't scan.</li>
+      <li><strong>Keep contrast high</strong> — black code on a white background works best; avoid fancy colors.</li>
+      <li><strong>Tell people what they'll get:</strong> add a line like "Scan for our menu" or "Scan to chat on WhatsApp".</li>
+      <li><strong>Test before printing hundreds</strong> — scan it with two different phones first.</li>
+      <li><strong>Use short links</strong> where possible; shorter content creates cleaner, easier-to-scan codes.</li>
+    </ul>
+
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq">
+      <details>
+        <summary>Is this QR code generator free?</summary>
+        <p>Yes — generate up to 3 QR codes per day free, no sign-up. Pro members (Rs. 500/month) get unlimited QR codes.</p>
+      </details>
+      <details>
+        <summary>Do the QR codes expire?</summary>
+        <p>No. The QR codes created here encode your text directly and never expire. They work as long as the link or content they point to stays valid.</p>
+      </details>
+      <details>
+        <summary>Can I use the QR code for my business commercially?</summary>
+        <p>Yes — the PNG images you download are yours to print and use anywhere: banners, menus, packaging, and advertisements.</p>
+      </details>
+      <details>
+        <summary>What can I put in a QR code?</summary>
+        <p>Website links, WhatsApp chat links, plain text, phone numbers, email addresses, Wi-Fi details, and payment links — anything under about 2000 characters.</p>
+      </details>
+      <details>
+        <summary>The QR code isn't generating. What should I do?</summary>
+        <p>The QR library needs an internet connection to load on first visit. Check your connection and reload the page. If it still fails, everything else on the site keeps working.</p>
+      </details>
+    </div>
+  </article>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <h4>Areesha Tools</h4>
+        <p>Free online tools for Pakistani businesses — by Areesha Fatima.</p>
+        <p>WhatsApp: <a href="https://wa.me/923214930875">0321 4930875</a></p>
+      </div>
+      <div>
+        <h4>Tools</h4>
+        <ul>
+          <li><a href="whatsapp-link-generator.html">WhatsApp Link Generator</a></li>
+          <li><a href="seo-checker.html">Website SEO Checker</a></li>
+          <li><a href="qr-generator.html">QR Code Generator</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <ul>
+          <li><a href="pricing.html">Pricing</a></li>
+          <li><a href="index.html">Home</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="fine">© 2026 Areesha Tools by Areesha Fatima. Made for Pakistani businesses.</p>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

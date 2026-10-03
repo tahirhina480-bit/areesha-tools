@@ -1,0 +1,1 @@
+{"description":"Areesha Tools — free online tools for Pakistani businesses (static site + Vercel serverless code verification)","engines":{"node":">=18"},"name":"areesha-tools","private":true,"scripts":{"generate-codes":"node scripts/generate-codes.js","hash-codes":"node scripts/hash-codes.js"},"version":"1.0.0"}
