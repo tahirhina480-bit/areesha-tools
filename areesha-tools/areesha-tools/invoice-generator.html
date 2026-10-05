@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Free Invoice Generator — Professional PKR Bills in Seconds | Areesha Tools</title>
+  <meta name="description" content="Free invoice generator for Pakistani businesses: create professional PKR invoices with tax, print or save as PDF. No sign-up.">
+  <meta property="og:title" content="Free Invoice Generator — Professional PKR Bills in Seconds">
+  <meta property="og:description" content="Free invoice generator for Pakistani businesses: create professional PKR invoices with tax, print or save as PDF. No sign-up.">
+  <meta property="og:type" content="website">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand" href="index.html"><span class="brand-mark">A</span> Areesha Tools</a>
+    <nav class="nav" aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a href="whatsapp-link-generator.html">WhatsApp Tool</a>
+      <a href="seo-checker.html">SEO Checker</a>
+      <a href="qr-generator.html">QR Generator</a>
+      <a href="index.html#tools">All Tools</a>
+      <a href="pricing.html">Pricing</a>
+      <span class="pro-badge" id="at-pro-badge"></span>
+      <button class="btn small" id="at-unlock-link" type="button">Unlock Pro</button>
+    </nav>
+  </div>
+</header>
+
+<main class="container">
+  <p class="crumb"><a href="index.html">Home</a> › Invoice Generator</p>
+  <h1>Free Invoice Generator</h1>
+  <p>Create a professional invoice in under a minute — add your items, and get automatic totals with tax. Print it or save as PDF and send on WhatsApp.</p>
+
+  <section class="toolbox" aria-label="Invoice generator tool">
+    <h2>Create Your Invoice</h2>
+    <div class="field">
+      <label for="inv-biz">Your business name</label>
+      <input type="text" id="inv-biz" placeholder="e.g. Smile Dental Clinic">
+    </div>
+    <div class="form-row">
+      <div class="field"><label for="inv-num">Invoice #</label><input type="text" id="inv-num" placeholder="001"></div>
+      <div class="field"><label for="inv-date">Date</label><input type="date" id="inv-date"></div>
+    </div>
+    <div class="field">
+      <label for="inv-billto">Bill to (client name)</label>
+      <input type="text" id="inv-billto" placeholder="Client name">
+    </div>
+    <h3>Items</h3>
+    <table class="inv-input-table"><thead><tr><th>Description</th><th>Qty</th><th>Rate (Rs.)</th><th></th></tr></thead>
+    <tbody id="inv-items"></tbody></table>
+    <button class="btn small secondary" id="inv-add-item" type="button">+ Add Item</button>
+    <div class="form-row">
+      <div class="field"><label for="inv-tax">Tax % (optional)</label><input type="number" id="inv-tax" placeholder="0" min="0"></div>
+      <div class="field"><label for="inv-notes">Notes (optional)</label><input type="text" id="inv-notes" placeholder="e.g. Payment due within 7 days"></div>
+    </div>
+    <p class="error" id="inv-error" role="alert"></p>
+    <button class="btn" id="inv-generate" type="button">Generate Invoice</button>
+    <div class="result" id="inv-result">
+      <div id="inv-preview"></div>
+      <div class="row"><button class="btn" id="inv-print" type="button">🖨️ Print / Save as PDF</button></div>
+    </div>
+    <p class="usage-note" data-usage-note="invoice"></p>
+  </section>
+
+  <article class="article">
+    <h2>What Is an Invoice Generator?</h2>
+    <p>An invoice generator is a free online tool that creates professional bills for your products or services in seconds. Instead of writing bills by hand or struggling with Excel, you type your business name, add items with quantities and rates, and get a clean, ready-to-print invoice with automatic totals and tax calculation.</p>
+    <p>For Pakistani freelancers, clinics, shops and home-based businesses, a proper invoice does two jobs: it reminds the customer to pay, and it makes your business look professional and trustworthy. Customers take a printed invoice far more seriously than a WhatsApp message saying "paise bhej dein".</p>
+    <h2>Why Professional Invoices Get You Paid Faster</h2>
+    <p>Most late payments are not about money — they are about clarity. When a customer sees an itemized bill with an invoice number, a date and a total, there is nothing to argue about. Add a short note like "Payment due within 7 days" and you have set an expectation without an awkward conversation.</p>
+    <p>Invoices also protect you. If a customer ever disputes what was agreed, your saved invoice is your record. Make it a habit: no work delivered without an invoice, even for small amounts.</p>
+    <h2>How to Use This Tool</h2>
+    <ol>
+      <li><strong>Enter your business name</strong>, invoice number and date.</li>
+      <li><strong>Add items</strong> — description, quantity and rate. Add as many rows as you need.</li>
+      <li><strong>Set tax %</strong> if applicable, and add payment notes.</li>
+      <li><strong>Generate</strong>, then <strong>Print / Save as PDF</strong> — send the PDF on WhatsApp or print it for walk-in customers.</li>
+    </ol>
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq">
+      <details>
+        <summary>Is this invoice generator really free?</summary>
+        <p>Yes — 3 free invoices per day, no sign-up. Pro members (Rs. 500/month) get unlimited invoices.</p>
+      </details>
+      <details>
+        <summary>How do I save the invoice as PDF?</summary>
+        <p>Click “Print / Save as PDF” and choose “Save as PDF” in the print dialog. Works on phones and computers.</p>
+      </details>
+      <details>
+        <summary>Is a printed invoice legally enough in Pakistan?</summary>
+        <p>For most small-business transactions, a clear invoice with both parties' details is standard practice. For tax matters, consult your accountant about FBR requirements.</p>
+      </details>
+      <details>
+        <summary>Can I add my logo?</summary>
+        <p>The current version keeps things simple for speed. A logo option is on our roadmap — meanwhile your business name prints prominently at the top.</p>
+      </details>
+    </div>
+  </article>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <h4>Areesha Tools</h4>
+        <p>Free online tools for Pakistani businesses — by Areesha Fatima.</p>
+        <p>WhatsApp: <a href="https://wa.me/923214930875">0321 4930875</a></p>
+      </div>
+      <div>
+        <h4>Tools</h4>
+        <ul>
+          <li><a href="whatsapp-link-generator.html">WhatsApp Link Generator</a></li>
+          <li><a href="seo-checker.html">Website SEO Checker</a></li>
+          <li><a href="qr-generator.html">QR Code Generator</a></li>
+          <li><a href="invoice-generator.html">Invoice Generator</a></li>
+          <li><a href="review-link-generator.html">Google Review Link Generator</a></li>
+          <li><a href="ad-headline-generator.html">Ad Headline Generator</a></li>
+          <li><a href="image-compressor.html">Image Compressor</a></li>
+          <li><a href="hashtag-generator.html">Hashtag Generator</a></li>
+          <li><a href="utm-builder.html">UTM Link Builder</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <ul>
+          <li><a href="pricing.html">Pricing</a></li>
+          <li><a href="index.html">Home</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="fine">© 2026 Areesha Tools by Areesha Fatima. Made for Pakistani businesses.</p>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
