@@ -42,6 +42,10 @@ Takes about 10 minutes. You need a free GitHub account and a free Vercel account
 
 Edit files → commit to GitHub → Vercel redeploys automatically. To add a new tool later, copy one tool page as a template.
 
+Serverless APIs in `/api/` (no env vars needed):
+- `verify-code.js` — Pro/Admin code verification (needs the env vars from step 3).
+- `seo-check.js` — automatic SEO checker: fetches a visitor's URL server-side and returns 10 checks + 0–100 score. Has a built-in SSRF guard (blocks localhost/private IPs) and a 10/minute/IP rate limit.
+
 ## Troubleshooting
 
 - **"Could not reach the server"** on code entry → the API isn't deployed or env vars are missing; check step 3 and redeploy.

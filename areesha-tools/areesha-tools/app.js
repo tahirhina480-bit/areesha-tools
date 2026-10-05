@@ -210,96 +210,94 @@
     });
   }
 
-  /* ---------- SEO checker (lite) ---------- */
-  var SEO_ITEMS = [
-    { id: "title", q: "Title tag", h: "Every page has a short, clear title (shown in the browser tab and Google results).", tip: "Add a unique title tag to every page (under 60 characters) with your main keyword and city, e.g. 'Best Dental Clinic in Lahore | Smile Care'." },
-    { id: "desc", q: "Meta description", h: "A 1–2 line summary under the title in Google results.", tip: "Write a meta description (120–160 characters) that includes your service, city, and a call to action like 'Book on WhatsApp'." },
-    { id: "mobile", q: "Mobile-friendly", h: "The site looks good and works well on phones.", tip: "Most Pakistani customers browse on mobile. Make buttons big, text readable, and test your site on your own phone." },
-    { id: "speed", q: "Fast loading", h: "Pages open in under 3 seconds.", tip: "Compress images before uploading and avoid heavy sliders. A slow site loses customers to competitors." },
-    { id: "contact", q: "Contact info visible", h: "Phone number and address are easy to find on every page.", tip: "Put your phone number in the header and a full address + map on the contact page." },
-    { id: "whatsapp", q: "WhatsApp button", h: "A click-to-chat WhatsApp button is visible.", tip: "Add a floating WhatsApp button — it is the #1 way Pakistani customers contact small businesses." },
-    { id: "gbp", q: "Google Business Profile", h: "Your business appears on Google Maps with correct info.", tip: "Claim and complete your free Google Business Profile: correct hours, services, and 10+ photos." },
-    { id: "reviews", q: "Customer reviews", h: "You have recent Google reviews (ideally 20+).", tip: "Ask every happy customer for a Google review. Reply to all reviews politely — it builds trust and rankings." },
-    { id: "social", q: "Social media links", h: "Facebook / Instagram / TikTok pages are linked from the site.", tip: "Link your active social profiles and keep the business name and phone number identical everywhere." },
-    { id: "fresh", q: "Fresh content", h: "The site or blog was updated in the last 3 months.", tip: "Google rewards active sites. Add offers, new photos, or a short blog post regularly." }
-  ];
+  /* ---------- SEO checker (automatic — server-side analysis) ---------- */
+  var SEO_STATUS_ICON = { pass: "\u2713", warn: "!", fail: "\u2717" };
+
+  function escHtml(s) {
+    return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+    });
+  }
 
   function initSeoTool() {
-    var listEl = document.getElementById("seo-checklist");
-    if (!listEl) return;
-    SEO_ITEMS.forEach(function (item) {
-      var div = document.createElement("div");
-      div.className = "check-item";
-      div.innerHTML =
-        '<div class="q"><strong>' + item.q + '</strong><span>' + item.h + "</span></div>" +
-        '<div class="yn"><button type="button" class="yes" data-id="' + item.id + '" data-v="yes">Yes</button>' +
-        '<button type="button" class="no" data-id="' + item.id + '" data-v="no">No</button></div>';
-      listEl.appendChild(div);
-    });
-    var answers = {};
-    listEl.addEventListener("click", function (e) {
-      var b = e.target.closest("button[data-id]");
-      if (!b) return;
-      var id = b.getAttribute("data-id");
-      answers[id] = b.getAttribute("data-v");
-      listEl.querySelectorAll('button[data-id="' + id + '"]').forEach(function (x) { x.classList.remove("on"); });
-      b.classList.add("on");
-    });
+    var btn = document.getElementById("seo-check");
+    if (!btn) return;
 
-    document.getElementById("seo-check").addEventListener("click", function () {
-      var urlEl = document.getElementById("seo-url");
+    function showSeoError(msg) {
       var errEl = document.getElementById("seo-error");
-      errEl.classList.remove("show");
-      var raw = (urlEl.value || "").trim();
-      if (!raw) { errEl.textContent = "Please enter your website address."; errEl.classList.add("show"); return; }
-      var withProto = /^https?:\/\//i.test(raw) ? raw : "https://" + raw;
-      var parsed;
-      try { parsed = new URL(withProto); }
-      catch (e) { errEl.textContent = "That doesn't look like a valid website address."; errEl.classList.add("show"); return; }
+      errEl.textContent = msg;
+      errEl.classList.add("show");
+    }
 
-      var unanswered = SEO_ITEMS.filter(function (it) { return !(it.id in answers); });
-      if (unanswered.length) {
-        errEl.textContent = "Please answer all " + SEO_ITEMS.length + " questions (" + unanswered.length + " left).";
-        errEl.classList.add("show");
-        return;
+    function renderSeoResults(data) {
+      var html = "<h3>Results for " + escHtml(data.host) +
+        ' <span class="seo-meta">(' + data.sizeKb + " KB, checked in " + (data.fetchedMs / 1000).toFixed(1) + "s)</span></h3>";
+      html += '<div class="seo-list">';
+      data.checks.forEach(function (c) {
+        html += '<div class="seo-row ' + c.status + '">' +
+          '<span class="seo-ico" aria-hidden="true">' + SEO_STATUS_ICON[c.status] + "</span>" +
+          '<div class="seo-body"><strong>' + escHtml(c.label) + "</strong>" +
+          "<span>" + escHtml(c.detail) + "</span>" +
+          (c.tip ? '<span class="seo-tip">\uD83D\uDC49 ' + escHtml(c.tip) + "</span>" : "") +
+          "</div></div>";
+      });
+      html += "</div>";
+      var failed = data.checks.filter(function (c) { return c.status === "fail"; }).length;
+      if (failed) {
+        var waText = "Assalam-o-Alaikum! I checked my website (" + data.host + ") on Areesha Tools and got " + data.score + "/100. Can you help me fix it?";
+        html += '<p class="seo-cta">Want these fixed properly? <a href="https://wa.me/' + AT_WA_NUMBER + '?text=' + encodeURIComponent(waText) + '" target="_blank" rel="noopener">Chat with Areesha on WhatsApp</a> for a professional audit.</p>';
+      } else {
+        html += '<p class="seo-cta">\uD83C\uDF89 Great job! Keep your content fresh and keep collecting Google reviews to stay ahead.</p>';
       }
-      if (!canUse("seo-check")) { showUpgrade(); return; }
-
-      var yesCount = SEO_ITEMS.filter(function (it) { return answers[it.id] === "yes"; }).length;
-      var score = yesCount * 10;
-      var host = parsed.hostname.replace(/^www\./, "");
-      var autoNotes = [];
-      autoNotes.push(parsed.protocol === "https:" ? "✓ Your site uses HTTPS (secure)." : "✗ Your site does not use HTTPS — browsers warn visitors away. Get a free SSL certificate.");
-      if (host.length <= 20) autoNotes.push("✓ Your domain name is short and easy to remember.");
-      else autoNotes.push("! Your domain name is quite long (" + host.length + " characters) — shorter is easier to share.");
-      var hyphens = (host.match(/-/g) || []).length;
-      if (hyphens > 1) autoNotes.push("! Your domain has " + hyphens + " hyphens — avoid hyphens when possible.");
-
-      document.getElementById("seo-auto-notes").innerHTML =
-        "<h3>Quick technical notes for " + host + "</h3><ul><li>" + autoNotes.join("</li><li>") + "</li></ul>";
-
-      var tipsEl = document.getElementById("seo-tips");
-      var missing = SEO_ITEMS.filter(function (it) { return answers[it.id] === "no"; });
-      tipsEl.innerHTML = missing.length
-        ? "<h3>Your priority fixes</h3><ol><li>" + missing.map(function (it) { return "<strong>" + it.q + ":</strong> " + it.tip; }).join("</li><li>") + "</li></ol>"
-        : "<h3>Excellent!</h3><p>You answered Yes to everything. Keep your content fresh and keep collecting reviews.</p>";
+      document.getElementById("seo-results").innerHTML = html;
 
       var wrap = document.getElementById("seo-score");
       wrap.classList.add("show");
       var numEl = document.getElementById("seo-score-num");
       var gradeEl = document.getElementById("seo-score-grade");
-      var grade = score >= 90 ? "Excellent 🌟" : score >= 70 ? "Good 👍" : score >= 50 ? "Needs Work 🔧" : "Needs Urgent Attention 🚨";
-      var start = null, dur = 900;
+      var score = data.score, start = null, dur = 900;
       function frame(ts) {
         if (!start) start = ts;
         var p = Math.min(1, (ts - start) / dur);
         numEl.textContent = Math.round(score * p);
         if (p < 1) requestAnimationFrame(frame);
-        else { numEl.textContent = score; gradeEl.textContent = grade + " — " + score + "/100"; }
+        else { numEl.textContent = score; gradeEl.textContent = data.grade + " \u2014 " + score + "/100"; }
       }
       requestAnimationFrame(frame);
       wrap.scrollIntoView({ behavior: "smooth", block: "center" });
-      consumeUse("seo-check");
+    }
+
+    btn.addEventListener("click", function () {
+      var urlEl = document.getElementById("seo-url");
+      var raw = (urlEl.value || "").trim();
+      document.getElementById("seo-error").classList.remove("show");
+      if (!raw) { showSeoError("Please enter your website address."); return; }
+      if (!canUse("seo-check")) { showUpgrade(); return; }
+
+      btn.disabled = true;
+      btn.textContent = "Checking...";
+      document.getElementById("seo-score").classList.remove("show");
+
+      fetch("/api/seo-check", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ url: raw })
+      })
+        .then(function (r) {
+          return r.json().catch(function () { return { ok: false, error: "Server error. Please try again." }; });
+        })
+        .then(function (data) {
+          btn.disabled = false;
+          btn.textContent = "Check My Website";
+          if (!data || !data.ok) { showSeoError((data && data.error) || "Could not check that website."); return; }
+          renderSeoResults(data);
+          consumeUse("seo-check");
+        })
+        .catch(function () {
+          btn.disabled = false;
+          btn.textContent = "Check My Website";
+          showSeoError("Could not reach the server. Check your connection and try again.");
+        });
     });
   }
 

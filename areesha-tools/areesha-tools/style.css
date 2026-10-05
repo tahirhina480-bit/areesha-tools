@@ -237,3 +237,19 @@ a { color: var(--green-dark); }
   .price-grid { grid-template-columns: repeat(2, 1fr); }
   .footer-grid { grid-template-columns: 2fr 1fr 1fr; }
 }
+
+/* ---------- Automatic SEO checker results ---------- */
+:root { --orange: #d97706; }
+.seo-results { text-align: left; max-width: 680px; margin: 18px auto 0; }
+.seo-results h3 { text-align: center; }
+.seo-meta { font-weight: 400; font-size: .85rem; color: var(--muted); }
+.seo-list { display: flex; flex-direction: column; gap: 10px; margin-top: 12px; }
+.seo-row { display: flex; gap: 12px; align-items: flex-start; background: #fff; border: 1px solid #e3ece6; border-radius: 12px; padding: 12px 14px; }
+.seo-ico { flex: 0 0 30px; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; color: #fff; margin-top: 2px; }
+.seo-row.pass .seo-ico { background: var(--green); }
+.seo-row.warn .seo-ico { background: var(--orange); }
+.seo-row.fail .seo-ico { background: var(--red); }
+.seo-body strong { display: block; margin-bottom: 2px; }
+.seo-body span { display: block; font-size: .9rem; color: var(--muted); }
+.seo-body .seo-tip { margin-top: 6px; color: var(--ink); background: var(--green-light); border-radius: 8px; padding: 8px 10px; }
+.seo-cta { text-align: center; margin-top: 18px; }
