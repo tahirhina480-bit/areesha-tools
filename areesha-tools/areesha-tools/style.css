@@ -137,30 +137,7 @@ img { max-width: 100%; }
 .mock-line { height: 9px; border-radius: 6px; background: rgba(255,255,255,.10); margin-bottom: 7px; }
 .mock-line.short { width: 62%; }
 .mock-btn { display: block; text-align: center; font-size: .68rem; font-weight: 800; color: #fff; background: var(--grad); border-radius: 8px; padding: 8px; margin-top: 4px; }
-.mock-qr {
-  --m: #0a0b1d;
-  width: 76px; height: 76px; border-radius: 10px; margin: 2px auto;
-  background-color: #fff;
-  background-image:
-    linear-gradient(var(--m), var(--m)), linear-gradient(var(--m), var(--m)), linear-gradient(var(--m), var(--m)),
-    linear-gradient(#fff, #fff), linear-gradient(#fff, #fff), linear-gradient(#fff, #fff),
-    linear-gradient(var(--m), var(--m)), linear-gradient(var(--m), var(--m)), linear-gradient(var(--m), var(--m)),
-    linear-gradient(var(--m), var(--m)), linear-gradient(var(--m), var(--m)),
-    linear-gradient(var(--m), var(--m)), linear-gradient(var(--m), var(--m)),
-    linear-gradient(var(--m), var(--m)), linear-gradient(var(--m), var(--m));
-  background-size:
-    21px 21px, 21px 21px, 21px 21px,
-    13px 13px, 13px 13px, 13px 13px,
-    5px 5px, 5px 5px, 5px 5px,
-    4px 4px, 4px 4px, 8px 4px, 4px 8px, 4px 4px, 6px 6px;
-  background-position:
-    5px 5px, 50px 5px, 5px 50px,
-    9px 9px, 54px 9px, 9px 54px,
-    13px 13px, 58px 13px, 13px 58px,
-    32px 8px, 40px 20px, 30px 34px, 44px 44px, 60px 40px, 34px 56px;
-  background-repeat: no-repeat;
-  border: 1px solid var(--line);
-}
+img.mock-qr { width: 76px; height: 76px; border-radius: 10px; margin: 2px auto; display: block; border: 1px solid var(--line); background: #fff; padding: 4px; }
 .mock-score { display: flex; align-items: center; gap: 10px; }
 .ring { --p: 87; width: 64px; height: 64px; border-radius: 50%; flex: 0 0 64px; position: relative;
   background: conic-gradient(var(--green) calc(var(--p) * 1%), rgba(255,255,255,.12) 0);
@@ -198,8 +175,10 @@ img { max-width: 100%; }
 .card:hover::before { opacity: 1; }
 .card .icon {
   width: 52px; height: 52px; border-radius: 15px; display: flex; align-items: center; justify-content: center;
-  font-size: 1.5rem; background: var(--grad-soft); border: 1px solid rgba(139, 92, 246, .35); margin-bottom: 14px;
+  background: var(--grad-soft); border: 1px solid rgba(139, 92, 246, .35); margin-bottom: 14px;
 }
+.card .icon svg { width: 26px; height: 26px; stroke: #c4b5fd; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.card .icon svg .fill { fill: #c4b5fd; stroke: none; }
 .card h3 { margin: 0 0 8px; font-size: 1.12rem; }
 .card p { color: var(--muted); font-size: .94rem; margin: 0 0 16px; flex: 1; }
 .card .btn { align-self: flex-start; }
