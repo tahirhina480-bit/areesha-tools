@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://areesha-tools.vercel.app/sitemap.xml
